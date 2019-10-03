@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Cloning repository 
+      uses: actions/checkout@v1
+    - name: Running Oryx to build repository
+      uses: cormacpayne/demo-webapp-action@master
