@@ -6,9 +6,18 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Cloning repository 
+    - name: Cloning repository
       uses: actions/checkout@v1
-    - name: Running Oryx to build repository
-      uses: cormacpayne/demo-webapp-action@master
+    - name: Running Oryx to generate a Dockerfile
+      id: oryxdockerfile
+      uses: cormacpayne/demo-webapp-action@dockerfile
+    - name: Publish to registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: sample/nodeapp
+        registry: ${{ secrets.REGISTRY }}
+        dockerfile: {{ steps.oryxdockerfile.outputs.dockerfilePath }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
