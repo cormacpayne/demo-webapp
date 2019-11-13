@@ -13,4 +13,4 @@ jobs:
     - name: Running Oryx to build repository
       uses: cormacpayne/demo-webapp-action@master
     - name: Listing files in HOME environment variable ($HOME)
-      run: find $HOME -type f -maxdepth 1
+      run: find $HOME -maxdepth 1
