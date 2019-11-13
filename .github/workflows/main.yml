@@ -10,5 +10,8 @@ jobs:
     steps:
     - name: Cloning repository 
       uses: actions/checkout@v1
-    - name: Determining location
-      run: echo "$PWD"
+    - name: Displaying environment variables
+      run: |
+        echo "HOME: $HOME"
+        echo "GITHUB_WORKFLOW: $GITHUB_WORKFLOW"
+        echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
