@@ -11,6 +11,6 @@ jobs:
     - name: Cloning repository 
       uses: actions/checkout@v1
     - name: Running Oryx to build repository
-      uses: cormacpayne/demo-webapp-action@master
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
     - name: Listing files in HOME environment variable ($HOME)
       run: find $HOME -maxdepth 1
