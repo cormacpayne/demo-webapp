@@ -16,6 +16,16 @@ jobs:
       with:
         source-directory: create-react-app-sample
 
+    - name: Running Oryx to build Angular 8 app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: angular8app
+
+    - name: Running Oryx to build Express 4 app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: webfrontend-yarnlock
+
     - name: Running Oryx to build .NET Core 2.1 app
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
