@@ -10,7 +10,18 @@ jobs:
     steps:
     - name: Cloning repository
       uses: actions/checkout@v1
-    - name: Running Oryx to build repository
+
+    - name: Running Oryx to build React app
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
         source-directory: create-react-app-sample
+
+    - name: Running Oryx to build .NET Core 2.1 app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: NetCoreApp21.WebApp
+
+    - name: Running Oryx to build .NET Core 3.0 app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: NetCoreApp30.WebApp
