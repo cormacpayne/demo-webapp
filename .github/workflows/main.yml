@@ -58,8 +58,12 @@ jobs:
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
         source-directory: mysqli-example
+        platform: php
+        platform-version: 7.3
 
     - name: Running Oryx to build PostgreSQL app
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
         source-directory: pgsql-example
+        platform: php
+        platform-version: 7.3
