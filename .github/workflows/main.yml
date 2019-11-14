@@ -10,8 +10,5 @@ jobs:
     steps:
     - name: Cloning repository 
       uses: actions/checkout@v1
-    - name: Displaying environment variables
-      run: |
-        echo "HOME: $HOME"
-        echo "GITHUB_WORKFLOW: $GITHUB_WORKFLOW"
-        echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+    - name: Running Oryx to build repository
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
