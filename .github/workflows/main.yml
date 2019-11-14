@@ -11,6 +11,8 @@ jobs:
     - name: Cloning repository
       uses: actions/checkout@v1
 
+    # Node apps
+
     - name: Running Oryx to build React app
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
@@ -26,6 +28,8 @@ jobs:
       with:
         source-directory: webfrontend-yarnlock
 
+    # .NET Core apps
+
     - name: Running Oryx to build .NET Core 2.1 app
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
@@ -36,6 +40,8 @@ jobs:
       with:
         source-directory: NetCoreApp30.WebApp
 
+    # Python apps
+
     - name: Running Oryx to build Django app
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
@@ -45,3 +51,15 @@ jobs:
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
         source-directory: mssqlserver-sample
+
+    # PHP apps
+
+    - name: Running Oryx to build MySQLi app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: mysqli-example
+
+    - name: Running Oryx to build PostgreSQL app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: pgsql-example
