@@ -25,3 +25,13 @@ jobs:
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
       with:
         source-directory: NetCoreApp30.WebApp
+
+    - name: Running Oryx to build Django app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: django-app
+
+    - name: Running Oryx to build SQL Server app
+      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: mssqlserver-sample
