@@ -6,9 +6,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Cloning repository 
+    - name: Cloning repository
       uses: actions/checkout@v1
     - name: Running Oryx to build repository
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+      with:
+        source-directory: create-react-app-sample
