@@ -13,27 +13,27 @@ jobs:
 
     # Node apps
 
-    - name: Running Oryx to build React app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: create-react-app-sample
+  #  - name: Running Oryx to build React app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: create-react-app-sample
 
-    - name: Running Oryx to build Angular 8 app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: angular8app
+  #  - name: Running Oryx to build Angular 8 app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: angular8app
 
-    - name: Running Oryx to build Express 4 app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: webfrontend-yarnlock
+  #  - name: Running Oryx to build Express 4 app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: webfrontend-yarnlock
 
     # .NET Core apps
 
-    - name: Running Oryx to build .NET Core 2.1 app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: NetCoreApp21.WebApp
+  #  - name: Running Oryx to build .NET Core 2.1 app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: NetCoreApp21.WebApp
 
     - name: Running Oryx to build .NET Core 3.0 app
       uses: microsoft/oryx/actions/oryx-build@corm/github-actions
@@ -42,28 +42,37 @@ jobs:
 
     # Python apps
 
-    - name: Running Oryx to build Django app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: django-app
+  #  - name: Running Oryx to build Django app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: django-app
 
-    - name: Running Oryx to build SQL Server app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: mssqlserver-sample
+  #  - name: Running Oryx to build SQL Server app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: mssqlserver-sample
 
     # PHP apps
 
-    - name: Running Oryx to build MySQLi app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: mysqli-example
-        platform: php
-        platform-version: 7.3
+  #  - name: Running Oryx to build MySQLi app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: mysqli-example
+  #      platform: php
+  #      platform-version: 7.3
 
-    - name: Running Oryx to build PostgreSQL app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #  - name: Running Oryx to build PostgreSQL app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: pgsql-example
+  #      platform: php
+  #      platform-version: 7.3
+
+    # Deploy .NET Core app
+
+    - name: Deploying .NET Core 3.0 app to Azure App Service
+      uses: azure/webapps-deploy@v1
       with:
-        source-directory: pgsql-example
-        platform: php
-        platform-version: 7.3
+        package: NetCoreApp30.WebApp
+        app-name: cormtestwebapp
+        publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
