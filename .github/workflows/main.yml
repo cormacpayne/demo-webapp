@@ -89,6 +89,4 @@ jobs:
 
     - name: Display Dockerfile path
       run: |
-        if [ -f "${{ steps.oryx.outputs.dockerfile-path }}" ]; then echo "${{ steps.oryx.outputs.dockerfile-path }} exists"; else echo "${{ steps.oryx.outputs.dockerfile-path }} does not exist"; fi
-        if [ -f "/${{ steps.oryx.outputs.dockerfile-path }}" ]; then echo "/${{ steps.oryx.outputs.dockerfile-path }} exists"; else echo "/${{ steps.oryx.outputs.dockerfile-path }} does not exist"; fi
-        if [ -f "$PWD/${{ steps.oryx.outputs.dockerfile-path }}" ]; then echo "$PWD/${{ steps.oryx.outputs.dockerfile-path }} exists"; else echo "$PWD/${{ steps.oryx.outputs.dockerfile-path }} does not exist"; fi
+        cat ${{ steps.oryx.outputs.dockerfile-path }}
