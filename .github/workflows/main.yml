@@ -96,5 +96,5 @@ jobs:
       run: |
         az acr build -t build:latest \
                      -r cormtestregistry \
-                     -f ${{ steps.oryx.outputs.dockerfile-path }}
+                     -f ${{ steps.oryx.outputs.dockerfile-path }} \
                      NetCoreApp30.WebApp
