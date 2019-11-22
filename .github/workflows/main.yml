@@ -88,10 +88,13 @@ jobs:
     # Push Docker image to ACR
 
     - name: Azure authentication
-      uses: azure/actions/login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: List resources in authenticated account
+    - name: Building image and pushing to ACR
       run: |
-        az resource list
+        az acr build -t build:latest \
+                     -r cormtestregistry \
+                     -f ${{ steps.oryx.outputs.dockerfile-path }}
+                     NetCoreApp30.WebApp
