@@ -35,8 +35,14 @@ jobs:
   #    with:
   #      source-directory: NetCoreApp21.WebApp
 
-    - name: Running Oryx to build .NET Core 3.0 app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #  - name: Running Oryx to build .NET Core 3.0 app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: NetCoreApp30.WebApp
+
+    - name: Using Oryx to create Dockerfile to build and deploy .NET Core 3.0 app
+      uses: microsoft/oryx/actions/oryx-dockerfile@corm/github-actions
+      id: oryx
       with:
         source-directory: NetCoreApp30.WebApp
 
@@ -70,9 +76,15 @@ jobs:
 
     # Deploy .NET Core app
 
-    - name: Deploying .NET Core 3.0 app to Azure App Service
-      uses: azure/webapps-deploy@v1
-      with:
-        package: NetCoreApp30.WebApp
-        app-name: cormtestwebapp
-        publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
+  #  - name: Deploying .NET Core 3.0 app to Azure App Service
+  #    uses: azure/webapps-deploy@v1
+  #    with:
+  #      package: NetCoreApp30.WebApp
+  #      app-name: cormtestwebapp
+  #      publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
+
+    # Push Docker image to ACR
+
+    - name: Display Dockerfile path
+      run: |
+        echo "${{ steps.oryx.outputs.dockerfile-path }}"
