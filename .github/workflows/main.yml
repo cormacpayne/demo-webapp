@@ -114,5 +114,5 @@ jobs:
 
     - name: Build and push to registry
       run: |
-        docker build NetCoreApp30.WebApp -t cormtestregistry.azurecr.io/build:latest -f {{ steps.oryx.outputs.dockerfile-path }}
+        docker build NetCoreApp30.WebApp -t cormtestregistry.azurecr.io/build:latest -f ${{ steps.oryx.outputs.dockerfile-path }}
         docker push cormtestregistry.azurecr.io/build:latest
