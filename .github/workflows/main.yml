@@ -87,6 +87,11 @@ jobs:
 
     # Push Docker image to ACR
 
-    - name: Display Dockerfile path
+    - name: Azure authentication
+      uses: azure/action/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: List resources in authenticated account
       run: |
-        cat "${{ steps.oryx.outputs.dockerfile-path }}"
+        az resource list
