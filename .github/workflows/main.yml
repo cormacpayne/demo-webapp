@@ -89,4 +89,4 @@ jobs:
 
     - name: Display Dockerfile path
       run: |
-        cat ${{ steps.oryx.outputs.dockerfile-path }}
+        cat "${{ steps.oryx.outputs.dockerfile-path }}"
