@@ -46,7 +46,7 @@ jobs:
       with:
         source-directory: NetCoreApp30.WebApp
         platform: dotnet
-        platform-version: 3.0
+        platform-version: "3.0"
 
     # Python apps
 
