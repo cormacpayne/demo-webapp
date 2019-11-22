@@ -87,20 +87,32 @@ jobs:
 
     # Push Docker image to ACR
 
-    - name: Azure authentication
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+  #  - name: Azure authentication
+  #    uses: azure/login@v1
+  #    with:
+  #      creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Building image and pushing to ACR
+  #  - name: Building image and pushing to ACR
+  #    run: |
+  #      az acr build -t build:latest \
+  #                   -r cormtestregistry \
+  #                   -f ${{ steps.oryx.outputs.dockerfile-path }} \
+  #                   NetCoreApp30.WebApp
+
+  #  - name: Deploying container web app to Azure
+  #    uses: azure/webapps-container-deploy@v1
+  #    with:
+  #      app-name: cormtestcontainerwebapp
+  #      images: cormtestregistry/build:latest
+
+    - name: Docker authentication
+      uses: azure/docker-login@v1
+      with:
+        login-server: cormtestregistry.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - name: Build and push to registry
       run: |
-        az acr build -t build:latest \
-                     -r cormtestregistry \
-                     -f ${{ steps.oryx.outputs.dockerfile-path }} \
-                     NetCoreApp30.WebApp
-
-    - name: Deploying container web app to Azure
-      uses: azure/webapps-container-deploy@v1
-      with:
-        app-name: cormtestcontainerwebapp
-        images: cormtestregistry/build:latest
+        docker build NetCoreApp30.WebApp -t cormtestregistry.azurecr.io/build:latest -f {{ steps.oryx.outputs.dockerfile-path }}
+        docker push cormtestregistry.azurecr.io/build:latest
