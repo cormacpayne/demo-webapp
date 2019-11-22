@@ -98,3 +98,9 @@ jobs:
                      -r cormtestregistry \
                      -f ${{ steps.oryx.outputs.dockerfile-path }} \
                      NetCoreApp30.WebApp
+
+    - name: Deploying container web app to Azure
+      uses: azure/webapps-container-deploy@v1
+      with:
+        app-name: cormtestcontainerwebapp
+        images: cormtestregistry/build:latest
