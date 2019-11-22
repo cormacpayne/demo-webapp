@@ -45,6 +45,8 @@ jobs:
       id: oryx
       with:
         source-directory: NetCoreApp30.WebApp
+        platform: dotnet
+        platform-version: 3.0
 
     # Python apps
 
@@ -87,4 +89,4 @@ jobs:
 
     - name: Display Dockerfile path
       run: |
-        echo "${{ steps.oryx.outputs.dockerfile-path }}"
+        cat "${{ steps.oryx.outputs.dockerfile-path }}"
