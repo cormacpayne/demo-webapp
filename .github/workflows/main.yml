@@ -12,7 +12,8 @@ jobs:
       uses: actions/checkout@v1
     
     - name: Listing environment variables
-      run: printenv
+      shell: pwsh
+      run: Invoke-RestMethod -Method Get -Uri "https://api.github.com/repos/cormacpayne/demo-webapp/actions/runs/$($env:GITHUB_RUN_ID)/jobs"
 
     # Node apps
 
