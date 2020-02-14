@@ -11,9 +11,15 @@ jobs:
     - name: Cloning repository
       uses: actions/checkout@v1
     
-    - name: Attempt to get current run metadata
+    - name: Get current run metadata using PowerShell
       shell: pwsh
-      run: $run = Invoke-RestMethod -Method Get -Uri "https://api.github.com/repos/cormacpayne/demo-webapp/actions/runs/$($env:GITHUB_RUN_ID)/jobs"; $run.jobs.steps
+      run: $run = Invoke-RestMethod -Method Get -Uri "https://api.github.com/repos/$($env:GITHUB_REPOSITORY)/actions/runs/$($env:GITHUB_RUN_ID)/jobs"; $run.jobs.steps
+
+    - name: Get current run metadata using curL
+      run: curl -X GET "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs"
+      
+    - name: Get current run metadata using GitHub Action
+      uses: cormacpayne/demo-webapp-action@master
 
     # Node apps
 
