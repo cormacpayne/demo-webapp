@@ -10,6 +10,9 @@ jobs:
     steps:
     - name: Cloning repository
       uses: actions/checkout@v1
+    
+    - name: Listing environment variables
+      run: printenv
 
     # Node apps
 
@@ -35,12 +38,12 @@ jobs:
   #    with:
   #      source-directory: NetCoreApp21.WebApp
 
-    - name: Running Oryx to build .NET Core 3.0 app
-      uses: microsoft/oryx/actions/oryx-build@corm/github-actions
-      with:
-        source-directory: NetCoreApp30.WebApp
-      env:
-        ORYX_DATA_COLLECTION: false
+  #  - name: Running Oryx to build .NET Core 3.0 app
+  #    uses: microsoft/oryx/actions/oryx-build@corm/github-actions
+  #    with:
+  #      source-directory: NetCoreApp30.WebApp
+  #    env:
+  #      ORYX_DATA_COLLECTION: false
 
   #  - name: Using Oryx to create Dockerfile to build and deploy .NET Core 3.0 app
   #    uses: microsoft/oryx/actions/oryx-dockerfile@corm/github-actions
