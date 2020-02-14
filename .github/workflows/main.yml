@@ -11,9 +11,9 @@ jobs:
     - name: Cloning repository
       uses: actions/checkout@v1
     
-    - name: Listing environment variables
+    - name: Attempt to get current run metadata
       shell: pwsh
-      run: Invoke-RestMethod -Method Get -Uri "https://api.github.com/repos/cormacpayne/demo-webapp/actions/runs/$($env:GITHUB_RUN_ID)/jobs"
+      run: $run = Invoke-RestMethod -Method Get -Uri "https://api.github.com/repos/cormacpayne/demo-webapp/actions/runs/$($env:GITHUB_RUN_ID)/jobs"; $run.jobs.steps
 
     # Node apps
 
